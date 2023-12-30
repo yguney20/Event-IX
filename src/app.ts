@@ -9,6 +9,7 @@ import authRouter from "./routes/authRoutes";
 import deserializeUser from "./middlewares/deserializeUser";
 import fs from 'fs/promises';
 import path from 'path';
+import e from "express";
 
 
 const app = express();
@@ -20,28 +21,41 @@ app.use(deserializeUser);
 app.use(userRouter);
 app.use(authRouter);
 
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 const port = config.get<number>("port");
 
 async function createTables() {
-    try{ 
+    try { 
         log.info('Before querying the database');
 
         const sqlPath = path.join(__dirname, '../sql/createTables.sql');
-        const sql = await fs.readFile(sqlPath, 'utf-8');
+        const sqlFileContent = await fs.readFile(sqlPath, 'utf-8');
+        const sqlStatements = sqlFileContent.split(';');
         log.info('middle querying the database');
 
-        await pool.query(sql);
+        // Assuming pool.query is a valid function call here
+        for (const statement of sqlStatements) {
+            if (statement.trim()) {
+                await pool.query(statement);
+            }
+        }
         log.info('After querying the database');
         log.info('Tables created successfully');
     } catch (error) {
         log.error('Error creating tables:', error);
+        console.log(error);
         process.exit(1);
-      }
+    }
 }
 
 app.listen(port, async () => {
     log.info(`App started at http://localhost:${port}`);
 
     await connect();
-    //await createTables();
+    await createTables();
 })
+
+
+
+
