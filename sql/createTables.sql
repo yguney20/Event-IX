@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS Events (
     VenueID INT,
     Description TEXT,
     OrganizerID INT,
+    ImageURL VARCHAR(255), 
     FOREIGN KEY (VenueID) REFERENCES Venues(VenueID) ON DELETE CASCADE,
     FOREIGN KEY (OrganizerID) REFERENCES Organizers(OrganizerID) ON DELETE CASCADE
 );
@@ -72,8 +73,8 @@ CREATE TABLE IF NOT EXISTS Reservations (
 
 CREATE TABLE IF NOT EXISTS Tickets (
     TicketID INT AUTO_INCREMENT PRIMARY KEY,
-    BookingID INT,
-    ReservationID INT,
+    BookingID INT NULL,
+    ReservationID INT NULL,
     EventID INT,
     Price INT,
     SeatNumber VARCHAR(50),
