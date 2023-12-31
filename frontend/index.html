@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profilePanel.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="public/js/"></script>
+    <script src="js/script.js"></script>
+    <script src="js/profilePanel.js"></script>
     <title>Home | KU Events</title>
 </head>
 
@@ -55,6 +57,11 @@
                             </a>
                         </div>
                     </div>
+                    <div class="navbar-item">
+                        <span class="icon" id="profileIcon"> 
+                            <i class="fas fa-user-circle"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,7 +95,11 @@
             </p>
         </div>
     </footer>
-
+    <div id="profilePanel" class="profile-panel">
+        <button id="closeProfilePanel" class="delete" aria-label="close"></button>
+        <p>User Name: John Doe</p>
+        <p>Email: john@example.com</p>
+    </div>
 </body>
 
 </html>
