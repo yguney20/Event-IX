@@ -87,3 +87,27 @@ export async function getUserEmergencyContact(userId: number): Promise<any | nul
     }
 }
 
+export async function getUserFavoriteEventType(userId: number) {
+    try {
+        const query = `
+            SELECT Events.Type, COUNT(*) as eventCount
+            FROM Bookings
+            JOIN Tickets ON Bookings.BookingID = Tickets.BookingID
+            JOIN Events ON Tickets.EventID = Events.EventID
+            WHERE Bookings.UserID = ?
+            GROUP BY Events.Type
+            ORDER BY eventCount DESC
+            LIMIT 1
+        `;
+        const values = [userId];
+        const [rows] = await pool.query(query, values);
+
+        if ((rows as any).length === 0) {
+            return null; 
+        }
+        return (rows as any)[0].Type; 
+    } catch (error) {
+        console.error("Error getting user favorite event type:", error);
+        return null; 
+    }
+}

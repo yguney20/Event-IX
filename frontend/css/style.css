@@ -24,6 +24,11 @@ body {
     border: 1px solid #fff;
     color: #fff;
 }
+.button.login {
+    border: 1px solid  #3dba6f;
+    background-color: #3dba6f;
+    color: rgb(249, 250, 250);
+}
 
 .button.is-primary {
     background-color: #ff6f61;

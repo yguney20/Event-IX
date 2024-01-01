@@ -14,23 +14,29 @@ INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageUR
 ('Womens Basketball', 'Sports', '2024-01-01 00:00:00', 1, 'Galatsary vs Fenerbahçe womens team', 1, 'images/womanbasket.jpg');
 
 INSERT INTO Users (firstName, lastName, email, phone, password) VALUES
-('Serra', 'Işık', 'serraisik@email.com', '1234567890', 'serra123');
+('Serra', 'Işık', 'serraisik@email.com', '1234567890', 'serra123'),
+('Emre', 'Kaya', 'emrekaya@email.com', '9876543210', 'emrek123');
 
 INSERT INTO EmergencyContact (UserID, Phone, Name, Relation) VALUES
 (1, '1122334455', 'Alice Way', 'Mother'),
-(1, '5566778899', 'Bob Carlos', 'Father');
+(1, '5566778899', 'Bob Carlos', 'Father'),
+(2, '9988776655', 'Leyla Kaya', 'Sister');
 
 INSERT INTO Bookings (UserID, BookingDate, PaymentType) VALUES
 (1, '2023-01-10 00:00:00', 'Credit Card'),
 (1, '2023-01-15 00:00:00', 'Debit Card'),
 (1, '2024-04-20 19:00:00', 'Credit Card'),
-(1, '2024-05-05 20:00:00', 'PayPal');
+(1, '2024-05-05 20:00:00', 'PayPal'),
+(2, '2023-02-10 00:00:00', 'Credit Card'),
+(2, '2023-03-15 00:00:00', 'Debit Card');
 
 INSERT INTO Tickets (BookingID, ReservationID, EventID, Price, SeatNumber, TicketStatus) VALUES
 (1, NULL, 1, 100, 'A1', 'sold'),
 (2, NULL, 2, 150, 'B2', 'not sold'),
 (3, NULL, 3, 150, 'B2', 'sold'),
-(4, NULL, 4, 150, 'B2', 'sold');
+(4, NULL, 4, 150, 'B2', 'sold'),
+(5,NULL, 1, 100, 'C1', 'sold'),
+(6,NULL, 2, 150, 'D2', 'sold');
 
 
 

@@ -5,21 +5,16 @@ import {
     getUserTicketsHandler, 
     getUserEmergencyContactHandler, 
     getUserUpcomingBookingsHandler, 
-    getUserPastBookingsHandler 
+    getUserPastBookingsHandler, 
+    getUserFavoriteEventTypeHandler
 } from "../controllers/profileController";
 
 const profileRouter = express.Router();
 
-// Route for getting user ticket count
 profileRouter.get('/api/user/tickets', requireUser, getUserTicketsHandler);
-
-// Route for getting user emergency contact
 profileRouter.get('/api/user/emergency-contact', requireUser, getUserEmergencyContactHandler);
-
-// Route for getting user upcoming bookings
 profileRouter.get('/api/user/upcoming-bookings', requireUser, getUserUpcomingBookingsHandler);
-
-// Route for getting user past bookings
 profileRouter.get('/api/user/past-bookings', requireUser, getUserPastBookingsHandler);
+profileRouter.get('/api/user/fav-event-type', requireUser, getUserFavoriteEventTypeHandler);
 
 export default profileRouter;

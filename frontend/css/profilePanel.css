@@ -11,9 +11,12 @@
     transition: right 0.3s;
     overflow-y: auto;
     z-index: 5; /* Ensure it's above other content but below a potentially higher z-index navbar */
+    background: #f9f9f9; /* A light background color for the panel */
+    border-left: 3px solid #7ee0a5;
 }
 
 .profile-panel.open {
+    width: 500px;
     right: 0;
 }
 .profile-panel .profile-content {
@@ -32,7 +35,12 @@
     font-size: 1.5em;
     color: #333;
 }
-
+.profile-panel .profile-content .user-stats {
+    margin-top: 20px; /* Space above the user stats */
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* A light line for separation */
+    background-color: #f1f5f0;
+}
 .profile-panel p {
     font-size: 1em;
     color: #666;
@@ -44,5 +52,40 @@
 
 .event-details {
     font-size: smaller;
+}
+/* General spacing for content sections */
+.profile-panel .profile-content h5 {
+    color: #ff6f61;
+    margin-top: 20px; /* Adjust space above each section heading */
+}
+
+/* Styling for user contact information */
+.profile-panel .profile-content p {
+    font-weight: normal; 
+    font-size: 0.9em; /* Smaller font size for contact details */
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Consistent header styling */
+.profile-panel .profile-content .profile-title,
+.profile-panel .profile-content h3,
+.profile-panel .profile-content h5 {
+    font-weight: bold;
+    font-size: 1.2em; /* Standardize font size for headers */
+    color: #333;
+    margin-bottom: 10px; /* Space below headers */
+}
+
+/* Styling for list items */
+.profile-panel .profile-content ul {
+    list-style-type: disc; /* Bullet points for list items */
+    padding-left: 20px; /* Indent list items */
+}
+
+.profile-panel .profile-content li {
+    color: #8e580d; /* Light background on hover */
+    cursor: pointer;
+    margin-bottom: 5px; /* Space between list items */
 }
 

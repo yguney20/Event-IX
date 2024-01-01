@@ -1,5 +1,4 @@
-// Function to show the profile panel
-function showProfilePanel() {
+function toggleProfilePanel() {
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID'); 
 
@@ -9,17 +8,13 @@ function showProfilePanel() {
     }
 
     var profilePanel = document.getElementById('profilePanel');
-    profilePanel.classList.add('open'); // Use class to show the panel
-    fetchUserProfile();
-}
+    profilePanel.classList.toggle('open'); // Toggle the 'open' class to show/hide the panel
 
-// Function to hide the profile panel
-function closeProfilePanel() {
-    var profilePanel = document.getElementById('profilePanel');
-    profilePanel.classList.remove('open'); // Use class to hide the panel
+    // Only fetch user profile if we are opening the panel
+    if (profilePanel.classList.contains('open')) {
+        fetchUserProfile();
+    }
 }
-
-// Rest of your functions...
 
 document.addEventListener('DOMContentLoaded', () => {
     // Load the profile panel content dynamically
@@ -34,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attach event listeners to your profile icon
     var profileIcon = document.getElementById('profileIcon');
-    profileIcon.addEventListener('click', showProfilePanel);
+    profileIcon.addEventListener('click', toggleProfilePanel);
 });
 
 function loadProfilePanel() {
@@ -42,7 +37,6 @@ function loadProfilePanel() {
         .then(response => response.text())
         .then(data => {
             document.getElementById('profilePanel').innerHTML = data;
-            document.getElementById('closeProfilePanel').addEventListener('click', closeProfilePanel);
         })
         .catch(error => console.error('Error loading profile panel:', error));
 }
@@ -71,6 +65,7 @@ function fetchUserProfile() {
         console.log("data : ", data)
         updateProfilePanel(data);
         fetchUserTicketCount();
+        fetchUserFavoriteEventType();
         fetchUserEmergencyContact();
         fetchUserUpcomingBookings();
         fetchUserPastBookings();
@@ -239,7 +234,7 @@ function updateUpcomingBookingsUI(bookings) {
             eventName.className = 'event-name';
 
             const eventDetails = document.createElement('span');
-            eventDetails.textContent = ` - Date: ${new Date(booking.EventDate).toLocaleString()}, Location: ${booking.Location}`;
+            eventDetails.textContent = ` - Date: ${new Date(booking.EventDate).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}, Location: ${booking.Location}`;
             eventDetails.className = 'event-details';
 
             bookingElement.appendChild(eventName);
@@ -297,7 +292,7 @@ function updatePastBookingsUI(bookings) {
             eventName.className = 'event-name';
 
             const eventDetails = document.createElement('span');
-            eventDetails.textContent = ` - Date: ${new Date(booking.EventDate).toLocaleString()}, Location: ${booking.Location}`;
+            eventDetails.textContent = ` - Date: ${new Date(booking.EventDate).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}, Location: ${booking.Location}`;
             eventDetails.className = 'event-details';
 
             bookingElement.appendChild(eventName);
@@ -307,3 +302,35 @@ function updatePastBookingsUI(bookings) {
     }
 }
 
+function fetchUserFavoriteEventType() {
+    const token = localStorage.getItem('token'); 
+
+    if (!token) {
+        console.error('No authentication token found.');
+        return;
+    }
+
+    fetch('/api/user/fav-event-type', { 
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if(data && data.favoriteEventType) {
+            document.getElementById('userFavoriteEventType').textContent = `Favorite Event Type: ${data.favoriteEventType}`;
+        } else {
+            throw new Error('Favorite event type not available in the response.');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching favorite event type:', error);
+    });
+}
