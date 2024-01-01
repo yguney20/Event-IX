@@ -25,38 +25,47 @@ export async function getUserUpcomingBookings(userId: number): Promise<any[]> {
     try {
         const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
         const query = `
-            SELECT *
+            SELECT Bookings.BookingID, Bookings.BookingDate, Bookings.PaymentType,
+                   Events.EventID, Events.Name, Events.Date AS EventDate, Venues.Location
             FROM Bookings
-            JOIN Events ON Bookings.EventID = Events.EventID
+            JOIN Tickets ON Bookings.BookingID = Tickets.BookingID
+            JOIN Events ON Tickets.EventID = Events.EventID
+            JOIN Venues ON Events.VenueID = Venues.VenueID
             WHERE Bookings.UserID = ? AND Events.Date > ?
+            ORDER BY Events.Date ASC
         `;
         const values = [userId, currentDate];
         const [rows] = await pool.query(query, values);
-        
+
         return rows as any[];
     } catch (error) {
         console.error("Error getting user upcoming bookings:", error);
         return [];
     }
 }
+
 export async function getUserPastBookings(userId: number): Promise<any[]> {
     try {
         const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
         const query = `
-            SELECT *
+            SELECT Bookings.BookingID, Bookings.BookingDate, Bookings.PaymentType,
+                   Events.EventID, Events.Name, Events.Date AS EventDate, Venues.Location
             FROM Bookings
-            JOIN Events ON Bookings.EventID = Events.EventID
+            JOIN Tickets ON Bookings.BookingID = Tickets.BookingID
+            JOIN Events ON Tickets.EventID = Events.EventID
+            JOIN Venues ON Events.VenueID = Venues.VenueID
             WHERE Bookings.UserID = ? AND Events.Date < ?
         `;
         const values = [userId, currentDate];
         const [rows] = await pool.query(query, values);
-        
+
         return rows as any[];
     } catch (error) {
         console.error("Error getting user past bookings:", error);
         return [];
     }
 }
+
 export async function getUserEmergencyContact(userId: number): Promise<any | null> {
     try {
         const query = `

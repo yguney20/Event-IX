@@ -6,6 +6,7 @@ import log from "./utils/logger";
 import {connect, connection, pool} from "./utils/connectToDb";
 import userRouter from "./routes/userRoutes";
 import authRouter from "./routes/authRoutes";
+import profileRouter from './routes/profileRoutes';
 import deserializeUser from "./middlewares/deserializeUser";
 import fs from 'fs/promises';
 import path from 'path';
@@ -20,6 +21,7 @@ app.use(deserializeUser);
 
 app.use(userRouter);
 app.use(authRouter);
+app.use(profileRouter);
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 

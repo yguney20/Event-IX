@@ -16,3 +16,33 @@
 .profile-panel.open {
     right: 0;
 }
+.profile-panel .profile-content {
+    color: black; /* Or any other color that suits your design */
+}
+
+/* Optionally, if you want to style headings and paragraphs separately */
+.profile-panel .profile-content h2 {
+    color: #333; /* Darker color for headings */
+}
+
+.profile-panel .profile-content p {
+    color: #666; /* Lighter color for paragraphs */
+}
+.profile-panel h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.profile-panel p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+.event-name {
+    font-weight: bold;
+}
+
+.event-details {
+    font-size: smaller;
+}
+

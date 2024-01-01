@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/profilePanel.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/profilePanel.js"></script>
+    <script src="js/profilePanel.js" ></script>
+    <script src="js/login.js" defer></script>
     <title>Home | KU Events</title>
 </head>
 
@@ -49,19 +50,17 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-light">
-                                Log In
-                            </a>
+                            <a class="button is-light" id="loginButton" onclick="toggleLoginModal()">Log In</a>
                             <a class="button is-primary">
                                 <strong>Sign Up</strong>
                             </a>
                         </div>
                     </div>
-                    <div class="navbar-item">
-                        <span class="icon" id="profileIcon"> 
-                            <i class="fas fa-user-circle"></i>
-                        </span>
-                    </div>
+                </div>
+                <div class="navbar-item">
+                    <span class="icon" id="profileIcon"> 
+                        <i class="fas fa-user-circle"></i>
+                    </span>
                 </div>
             </div>
         </div>
@@ -94,11 +93,47 @@
                 Developed by Koc University Students;
             </p>
         </div>
+        <div id="profilePanel" class="profile-panel"></div>
+
+    </div>
     </footer>
-    <div id="profilePanel" class="profile-panel">
-        <button id="closeProfilePanel" class="delete" aria-label="close"></button>
-        <p>User Name: John Doe</p>
-        <p>Email: john@example.com</p>
+   
+    </div>
+    <div id="loginModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Login</p>
+                <button class="delete" aria-label="close" onclick="toggleLoginModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="loginForm">
+                    <!-- Login form content -->
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" name="email" placeholder="Email">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" name="password" placeholder="Password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <footer class="modal-card-foot">
+                        <button type="submit" class="button is-success">Login</button>
+                        <button type="button" class="button" onclick="toggleLoginModal()">Cancel</button>
+                    </footer>
+                </form>
+            </section>
+        </div>
     </div>
 </body>
 

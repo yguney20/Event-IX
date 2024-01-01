@@ -22,7 +22,7 @@ export async function createUserHandler(req: Request<{}, {}, CreateUserInput["bo
 // Controller func to get a user's profile by id
 export async function getUserProfileByIdHandler( req: Request<GetUserProfileInput["params"]>, res: Response ) {
   const userID = Number(req.params.userID);
-
+  
   if (isNaN(userID)) {
     return res.status(400).send("Invalid userID");
   }
