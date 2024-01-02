@@ -1,10 +1,10 @@
 INSERT INTO Venues (Name, Location, Capacity, ContactInfo) VALUES
 ('Fiyort', 'Istanbul/Sarıyer', 500, 'contact@fiyort.com'),
-('GalataPort', 'Istanbul/Beyoğlu', 1000, 'contact@galataport.com');
+('GalataPort', 'Istanbul/Beyoğlu', 1000, 'contact@galataport.com'),
 ('KucukCiftlik Park', 'Istanbul/Sisli', 17000, 'concact@kucukciftlik.com'),
-('Sinan Erdem Dome', 'Istanbul/Bakirkoy', 22000, 'contact@sinanerdemsports.com')
-('Zorlu PSM', 'Istanbul/Besiktas', 5000, 'contact@zorlupsm.com');
-('Besiktas Park', 'Istanbul/Besiktas' 42000, 'contact@bjk.com')
+('Sinan Erdem Dome', 'Istanbul/Bakirkoy', 22000, 'contact@sinanerdemsports.com'),
+('Zorlu PSM', 'Istanbul/Besiktas', 5000, 'contact@zorlupsm.com'),
+('Besiktas Park', 'Istanbul/Besiktas', 42000, 'contact@bjk.com');
 
 INSERT INTO Organizers (Name, ContactInfo) VALUES
 ('Mehmet Faruk', 'mehmet.f@gmail.com'),
@@ -18,11 +18,11 @@ INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageUR
 ('Edis', 'Concert', '2023-02-01 00:00:00', 2, 'Hepimizin çok sevdiği Edis, eğlenceli performansıyla sahnede!', 2, 'images/edis.jpg'),
 ('Kırmızı Başlıklı Kız', 'Theatre', '2024-05-01 00:00:00', 2, 'Çocuklar için olan oyunumuz, Kırmızı Başlıklı Kızın farklı bir yorumu', 2,'images/kırmızıbaşlık.jpg'),
 ('New Year Musical', 'Musical', '2024-02-01 00:00:00', 2, 'Lets start the 2024 together!', 2, 'images/newyear.jpg'),
-('Womens Basketball', 'Sports', '2024-01-01 00:00:00', 1, 'Galatsary vs Fenerbahçe womens team', 1, 'images/womanbasket.jpg');
+('Womens Basketball', 'Sports', '2024-01-01 00:00:00', 1, 'Galatsary vs Fenerbahçe womens team', 1, 'images/womanbasket.jpg'),
 ('The Blaze', 'Concert', '2024-05-18 18:00:00', 3, 'Ünlü Fransız elektro ikilisi THE BLAZE, 5 yıl aradan sonra canlı performansı!', 4, 'images/theBlaze'),
-('Tolga Çevik - Tolgshow', 'Theatre','2024-03-04 21:00:00',5, 'Arkadaşım’ karakteri ile milyonları güldüren Tolga Çevik sahnede', 3, 'images/tolgaCevik' ),
+('Tolga Çevik - Tolgshow', 'Theatre','2024-03-04 21:00:00', 5, 'Arkadaşım’ karakteri ile milyonları güldüren Tolga Çevik sahnede', 3, 'images/tolgaCevik' ),
 ('Amadeus', 'Musical', '2024-01-30 20:30:00', 5, 'Peter Shaffer tarafından kaleme alınan, dünya müzik tarihinin unutulmaz bestecileri Wolfgang Amadeus Mozart ile Antonio Salieri’nin eşsiz hikayesi AMADEUS sahnede!', 4, 'images/amadeus'),
-('Super Cup', 'Sports', '2024-01-15 21:00:00', 6, '2022-2023 Sezonu Süper Lig Şampiyonu Galatasaray ile Ziraat Türkiye Kupası Şampiyonu Fenerbahçe arasında', 6, 'images/superCup' ),
+('Super Cup', 'Sports', '2024-01-15 21:00:00', 6, '2022-2023 Sezonu Süper Lig Şampiyonu Galatasaray ile Ziraat Türkiye Kupası Şampiyonu Fenerbahçe arasında', 2, 'images/superCup' ),
 ('Metallica', 'Concert', '2024-05-24 18:00:00', 6, 'Attention Metallica fans! The band led by James Hetfield is returning to Europe', 2, 'images/metallica' );
 
 INSERT INTO Users (firstName, lastName, email, phone, password) VALUES
