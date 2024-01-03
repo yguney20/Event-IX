@@ -1,4 +1,4 @@
-import { getUserByEmail, comparePasswords, getUserById } from "./userServices";
+import { getUserByEmail, getUserById } from "./userServices";
 import config from "config";
 import { signJwt, verifyJwt } from "../utils/jwt";
 import { pool } from "../utils/connectToDb";
