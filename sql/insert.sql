@@ -20,7 +20,7 @@ INSERT INTO Organizers (Name, ContactInfo) VALUES
 INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageURL) VALUES
 ('Beyonce', 'Concert', '2023-01-01 00:00:00', 1, 'Beyonce Coming to Turkey after 20 years!', 1, 'images/beyonce.jpg'),
 ('Edis', 'Concert', '2023-02-01 00:00:00', 2, 'Hepimizin çok sevdiği Edis, eğlenceli performansıyla sahnede!', 2, 'images/edis.jpg'),
-('Kırmızı Başlıklı Kız', 'Theatre', '2024-05-01 00:00:00', 2, 'Çocuklar için olan oyunumuz, Kırmızı Başlıklı Kızın farklı bir yorumu', 2,'images/kirmiz.baslik.jpg'),
+('Kırmızı Başlıklı Kız', 'Theatre', '2024-05-01 00:00:00', 2, 'Çocuklar için olan oyunumuz, Kırmızı Başlıklı Kızın farklı bir yorumu', 2,'images/kirmizibaslik.jpg'),
 ('New Year Musical', 'Musical', '2024-02-01 00:00:00', 2, 'Lets start the 2024 together!', 2, 'images/newyear.jpg'),
 ('Womens Basketball', 'Sports', '2024-01-01 00:00:00', 1, 'Galatsary vs Fenerbahçe womens team', 1, 'images/womanbasket.jpg'),
 ('The Blaze', 'Concert', '2024-05-18 18:00:00', 3, 'Ünlü Fransız elektro ikilisi THE BLAZE, 5 yıl aradan sonra canlı performansı!', 4, 'images/theBlaze.jpg'),
@@ -33,7 +33,7 @@ INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageUR
 ('SOLOMUN', 'Concert', '2023-01-03 00:00:00', 8, "Klein Phönix SOLOMUN'u İstanbul'da ağırlıyor!", 5, 'images/solomun.jpg'),
 ('Peggy Gou', 'Concert' , '2024-08-07 00:00:00', 8, "Elektronik müzik sahnesinde ikonik kelimesinin tam karşılığı olan Peggy Gou 7 Ağustos'ta Klein Phönix'te!", 6, 'images/peggygou.jpg'),
 ('David Guetta', 'Concert', '2023-07-23 00:00:00', 8, "Dünyanın en büyük dans müziği idolu David Guetta, İstanbul'da...", 5, 'images/davidGuetta.jpg'),
-('Saatleri Ayarlama Enstitüsü', 'Theatre', '2024-01-05 00:00:00', 7, "Doğu ve batı, eski ve yeni, geleneksel ve modern kutupları arasında salınıp duran Ahmet Hamdi Tanpınar’ın ölümsüz eseri Saatleri Ayarlama Enstitüsü, Serkan Keskin’in onlarca surete büründüğü bir oyunculuk şöleniyle sinema ve tiyatronun iç içe geçtiği çağdaş bir uyarlama olarak izleyici ile buluşuyor.", 5, 'images/saatleriayarlamaenstitüsü.jpg'),
+('Saatleri Ayarlama Enstitüsü', 'Theatre', '2024-01-05 00:00:00', 7, "Doğu ve batı, eski ve yeni, geleneksel ve modern kutupları arasında salınıp duran Ahmet Hamdi Tanpınar’ın ölümsüz eseri Saatleri Ayarlama Enstitüsü, Serkan Keskin’in onlarca surete büründüğü bir oyunculuk şöleniyle sinema ve tiyatronun iç içe geçtiği çağdaş bir uyarlama olarak izleyici ile buluşuyor.", 5, 'images/saatleriayarlamaenstitusu.jpg'),
 ('Cimri', 'Theatre', '2024-05-12 00:00:00', 7, "Moliere'in ünlü Cimri oyunu, Tansu Biçer'in yorumu ve Serkan Keskin'in çok konuşulan Harpagon performansıyla Uniq Hall'da!", 6, 'images/cimri.jpg'),
 ('Zengin Mutfağı', 'Theatre', '2023-02-10 00:00:00', 7, "Şener Şen, DasDas prodüksiyonu olan Zengin Mutfağı’nda sahnelediği muhteşem performansıyla Uniq Hall'da!", 4, 'images/zenginmutfagi.jpg'),
 ('Swan Lake', 'Dance', '2024-10-27 00:00:00', 5, "The Kremlin Ballet will perform Tchaikovsky's famous masterpiece Swan Lake on the stage of the Zorlu Center.", 3, 'images/swanlake.jpg'),

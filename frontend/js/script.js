@@ -32,20 +32,21 @@ function renderEvents(events) {
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="${event.ImageURL || 'path/to/default-image.png'}" alt="Event image">
+                            <img src="${event.ImageURL || 'path/to/default-image.png'}" alt="${event.Name}">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
-                            <div class="media-content">
+                            <div class="media-content has-text-centered">
                                 <p class="title is-4">${event.Name}</p>
                                 <p class="subtitle is-6">${event.Type}</p>
+                                <p class="subtitle is-6">${new Date(event.Date).toLocaleString('en-US', {
+                                    day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute:'2-digit'
+                                })}</p>
                             </div>
                         </div>
                         <div class="content">
                             ${event.Description}
-                            <br>
-                            <time datetime="${event.Date}">${new Date(event.Date).toLocaleDateString()}</time>
                         </div>
                     </div>
                 </div>

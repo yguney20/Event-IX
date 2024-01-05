@@ -52,15 +52,6 @@ body {
     max-width: 950px;
 }
 
-
-.column {
-    margin-bottom: 10px;
-}
-
-.card{
-    border-radius: 6px;
-}
-
 #event-info {
     padding-left: 60px;
 }
@@ -145,3 +136,48 @@ body {
     margin-top: 3px; /* Space between the category buttons and the line */
 }
 
+/* Ensure that all images take up 100% of the card-image container */
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* This will ensure that the images cover the area nicely */
+}
+
+/* Standardize the size of the cards */
+.card {
+    display: flex;
+    flex-direction: column; /* Stack the image and content vertically */
+    height: 100%;
+}
+
+.card-content {
+    flex-grow: 1; /* Allow the card content to fill the available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the title/description and the date */
+}
+
+.media-content {
+    text-align: center; /* Center-align the text */
+}
+
+/* Add some spacing and style to the title and subtitles */
+.title {
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #4a4a4a; /* A softer color for the subtitles */
+    margin-bottom: 0.5rem;
+}
+
+/* Style for the description text */
+.content {
+    font-size: 0.8rem; /* Adjust the font size as necessary */
+    color: #707070; /* A softer color for the description */
+    overflow: hidden; /* Hide overflowed content */
+    text-overflow: ellipsis; /* Add an ellipsis for text that overflows */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show a maximum of 3 lines */
+    -webkit-box-orient: vertical;
+}
