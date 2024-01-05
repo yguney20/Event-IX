@@ -34,8 +34,7 @@ async function createTables() {
         const sqlPath = path.join(__dirname, '../sql/createTables.sql');
         const sqlFileContent = await fs.readFile(sqlPath, 'utf-8');
         const sqlStatements = sqlFileContent.split(';');
-        log.info('middle querying the database');
-
+        
         // Assuming pool.query is a valid function call here
         for (const statement of sqlStatements) {
             if (statement.trim()) {

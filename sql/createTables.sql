@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS Reservations (
 
 CREATE TABLE IF NOT EXISTS Tickets (
     TicketID INT AUTO_INCREMENT PRIMARY KEY,
-    BookingID INT NULL,
-    ReservationID INT NULL,
+    BookingID INT,
+    ReservationID INT,
     EventID INT,
     Price INT,
     SeatNumber VARCHAR(50),
