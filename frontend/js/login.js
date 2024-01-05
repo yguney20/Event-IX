@@ -3,6 +3,25 @@ function toggleLoginModal() {
     var modal = document.getElementById('loginModal');
     modal.classList.toggle('is-active');
 }
+function updateNavbarForLoggedInUser() {
+    var navbarButtons = document.querySelector('.navbar-item .buttons');
+    navbarButtons.innerHTML = `
+        <a class="button" id="logoutButton" onclick="logoutUser()">Log Out</a>
+    `;
+}
+
+function logoutUser() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userID');
+    var navbarButtons = document.querySelector('.navbar-item .buttons');
+    navbarButtons.innerHTML = `
+        <a class="button login" id="loginButton" onclick="toggleLoginModal()">Log In</a>
+        <a class="button is-primary" onclick="toggleSignupModal()">
+            <strong>Sign Up</strong>
+        </a>
+    `;
+}
+
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -25,6 +44,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(data => {
         // Login successful
+        updateNavbarForLoggedInUser();
         console.log('Login Success:', data);
         toggleLoginModal();
         
@@ -37,5 +57,11 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .catch((error) => {
         console.error('Error:', error);
         // Handle login errors (show an error message on the page)
+        var loginErrorElement = document.getElementById('loginError');
+        if (loginErrorElement) {
+            loginErrorElement.classList.add('show'); // This should correctly show the error message
+        } else {
+            console.log('Error message element not found');
+        }
     });
 });

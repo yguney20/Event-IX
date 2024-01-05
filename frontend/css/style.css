@@ -1,0 +1,147 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 50vh;
+    background: #f5f5f5;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 3px -1px rgba(0,0,0,.1);
+}
+
+.navbar-item img {
+    max-height: 3rem; /* Adjust logo size */
+}
+
+.navbar-burger {
+    color: #fff;
+}
+
+.button.is-light {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.button.login {
+    border: 1px solid  #3dba6f;
+    background-color: #3dba6f;
+    color: rgb(249, 250, 250);
+}
+
+.button.is-primary {
+    background-color: #ff6f61;
+}
+
+#login-box {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+#login-button {
+    margin-top: 15px;
+    width: 300px;
+}
+
+#login-submit-control {
+    padding-bottom: 15px;
+}
+
+#navbar-container {
+    max-width: 950px;
+}
+
+
+.column {
+    margin-bottom: 10px;
+}
+
+.card{
+    border-radius: 6px;
+}
+
+#event-info {
+    padding-left: 60px;
+}
+
+.button.signup {
+    border: 1px solid #ffcc29;
+    background-color: #ffcc29;
+    color: #333;
+}
+
+#signup-box {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+#signup-button {
+    margin-top: 15px;
+    width: 300px;
+}
+
+#signup-submit-control {
+    padding-bottom: 15px;
+}
+
+/* Category and filter button styling */
+.categories-filters {
+    text-align: center;
+    margin-top: 2rem; /* Adjust space from the hero section */
+}
+
+.category-buttons .button{
+    width: 150px;
+    height: 60px;
+    margin: 0.5rem;
+    border: none;
+    background-color: #D7E5CA;
+    color: #333;
+}
+
+
+.filter-buttons .button {
+    width: 90px;
+    height: 45px;
+    margin: 0.5rem;
+    border: none;
+    background-color: #D2E0FB;
+    color: #333;
+}
+
+.category-buttons .button {
+    padding: 1rem 2rem; /* Larger buttons for categories */
+}
+
+.filter-buttons .button {
+    padding: 0.5rem 1rem; /* Smaller buttons for filters */
+}
+
+.category-buttons .button:hover,
+.filter-buttons .button:hover {
+    background-color: #8EACCD;
+    color: #333;
+}
+
+/* Responsive adjustments (optional) */
+@media screen and (max-width: 768px) {
+    .category-buttons .button,
+    .filter-buttons .button {
+        width: 100%;
+
+    }
+}
+
+.full-width-line {
+    height: 1px; /* The height of the line */
+    background-color: #ccc; /* The color of the line */
+    width: 100vw; /* Full width of the viewport */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 3px; /* Space between the category buttons and the line */
+}
+

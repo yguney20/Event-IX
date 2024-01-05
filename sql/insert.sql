@@ -20,7 +20,7 @@ INSERT INTO Organizers (Name, ContactInfo) VALUES
 INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageURL) VALUES
 ('Beyonce', 'Concert', '2023-01-01 00:00:00', 1, 'Beyonce Coming to Turkey after 20 years!', 1, 'images/beyonce.jpg'),
 ('Edis', 'Concert', '2023-02-01 00:00:00', 2, 'Hepimizin çok sevdiği Edis, eğlenceli performansıyla sahnede!', 2, 'images/edis.jpg'),
-('Kırmızı Başlıklı Kız', 'Theatre', '2024-05-01 00:00:00', 2, 'Çocuklar için olan oyunumuz, Kırmızı Başlıklı Kızın farklı bir yorumu', 2,'images/kırmızıbaşlık.jpg'),
+('Kırmızı Başlıklı Kız', 'Theatre', '2024-05-01 00:00:00', 2, 'Çocuklar için olan oyunumuz, Kırmızı Başlıklı Kızın farklı bir yorumu', 2,'images/kirmiz.baslik.jpg'),
 ('New Year Musical', 'Musical', '2024-02-01 00:00:00', 2, 'Lets start the 2024 together!', 2, 'images/newyear.jpg'),
 ('Womens Basketball', 'Sports', '2024-01-01 00:00:00', 1, 'Galatsary vs Fenerbahçe womens team', 1, 'images/womanbasket.jpg'),
 ('The Blaze', 'Concert', '2024-05-18 18:00:00', 3, 'Ünlü Fransız elektro ikilisi THE BLAZE, 5 yıl aradan sonra canlı performansı!', 4, 'images/theBlaze.jpg'),
@@ -28,7 +28,7 @@ INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageUR
 ('Amadeus', 'Musical', '2024-01-30 20:30:00', 5, 'Peter Shaffer tarafından kaleme alınan, dünya müzik tarihinin unutulmaz bestecileri Wolfgang Amadeus Mozart ile Antonio Salieri’nin eşsiz hikayesi AMADEUS sahnede!', 4, 'images/amadeus.jpg'),
 ('Super Cup', 'Sports', '2024-01-15 21:00:00', 6, '2022-2023 Sezonu Süper Lig Şampiyonu Galatasaray ile Ziraat Türkiye Kupası Şampiyonu Fenerbahçe arasında', 6, 'images/superCup.jpg' ),
 ('Metallica', 'Concert', '2024-05-24 18:00:00', 6, 'Attention Metallica fans! The band led by James Hetfield is returning to Europe', 2, 'images/metallica.jpg' ),
-('Polo&Pan', 'Concert', '2024-03-11 00:00:00', 8, "Tropikal seslerle harmanladıkları house-elektronik müzikal seçkilerini, ilhamını aldıkları 90’lar hip-hop’ı ile birleştiren ve kendilerine ait bir sound yaratmayı başaran Fransız duo Polo & Pan Klein Phönix'te!", 5, 'images/polo&pan.jpg'),
+('Polo&Pan', 'Concert', '2024-03-11 00:00:00', 8, "Tropikal seslerle harmanladıkları house-elektronik müzikal seçkilerini, ilhamını aldıkları 90’lar hip-hop’ı ile birleştiren ve kendilerine ait bir sound yaratmayı başaran Fransız duo Polo & Pan Klein Phönix'te!", 5, 'images/polopan.jpg'),
 ('Richard', 'Theatre', '2023-01-03 00:00:00', 7, "Okan Bayülgen'in, Shakespeare’in ünlü trajedisinden hareketle yazıp yönettiği Richard Uniq Hall'da!", 6, 'images/richard.jpg'),
 ('SOLOMUN', 'Concert', '2023-01-03 00:00:00', 8, "Klein Phönix SOLOMUN'u İstanbul'da ağırlıyor!", 5, 'images/solomun.jpg'),
 ('Peggy Gou', 'Concert' , '2024-08-07 00:00:00', 8, "Elektronik müzik sahnesinde ikonik kelimesinin tam karşılığı olan Peggy Gou 7 Ağustos'ta Klein Phönix'te!", 6, 'images/peggygou.jpg'),
