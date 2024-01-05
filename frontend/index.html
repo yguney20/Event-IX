@@ -14,6 +14,7 @@
     <script src="js/profilePanel.js" ></script>
     <script src="js/login.js" defer></script>
     <script src="js/signUp.js" defer></script>
+    <script> src="js/logOut.js"</script>
     <title>Home | KU Events</title>
 </head>
 
@@ -66,7 +67,7 @@
             </div>
         </div>
     </nav>
-    <section class="hero is-light is-medium" style="min-height: 100vh;">
+    <section class="hero is-light is-medium" style="min-height: 5vh;">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
@@ -88,6 +89,41 @@
             </div>
         </div>
     </section>
+
+    <section class="section categories-filters">
+        <div class="container">
+            <div class="category-buttons">
+                <button class="button is-medium" onclick="location.href='categoryPages/concerts.html'">Concerts</button>
+                <button class="button is-medium" onclick="location.href='categoryPages/musicals.html'">Musicals</button>
+                <button class="button is-medium" onclick="location.href='categoryPages/sports.html'">Sports</button>
+                <button class="button is-medium" onclick="location.href='categoryPages/theatre.html'">Theatre</button>
+                <!-- Add more category buttons as needed -->
+            </div>
+            <div class="full-width-line"></div>
+            <div class="filter-buttons">
+                <button class="button is-small">Date</button>
+                <button class="button is-small">Price</button>
+                <!-- Add more filter buttons as needed -->
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Events Section -->
+    <section class="section events">
+        <div class="event-container">
+            <div class="columns is-multiline">
+                <!-- Event Item Placeholder -->
+                <div class="column is-one-third">
+                    <div class="card">
+                        <!-- Event content -->
+                    </div>
+                </div>
+                <!-- Repeat for each event -->
+            </div>
+        </div>
+    </section>
+    
     <footer class="footer hero is-dark">
         <div class="content has-text-centered">
             <p>
@@ -132,7 +168,9 @@
                         <button type="submit" class="button is-success">Login</button>
                         <button type="button" class="button" onclick="toggleLoginModal()">Cancel</button>
                     </footer>
+                    <p id="loginError" class="help is-danger">Invalid email or password.</p>
                 </form>
+                
             </section>
         </div>
     </div>
@@ -194,4 +232,5 @@
 </div>
 
 </body>
+
 </html>
