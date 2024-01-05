@@ -28,7 +28,7 @@ export async function loginHandler(req: Request<{}, {}, LoginInput["body"]>, res
   });
 
   // return access & refresh tokens
-  return res.status(200).json({ message: "Login successful", accessToken: accessToken, refreshToken: refreshToken });
+  return res.status(200).json({ message: "Login successful", accessToken: accessToken, refreshToken: refreshToken,userID: user.userID });
   } catch (error) {
     console.error("Error logging in:", error);
     return res.status(500).json({ error: "Failed to login" });

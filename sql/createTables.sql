@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS Events (
     VenueID INT,
     Description TEXT,
     OrganizerID INT,
+    ImageURL VARCHAR(255), 
     FOREIGN KEY (VenueID) REFERENCES Venues(VenueID) ON DELETE CASCADE,
     FOREIGN KEY (OrganizerID) REFERENCES Organizers(OrganizerID) ON DELETE CASCADE
 );

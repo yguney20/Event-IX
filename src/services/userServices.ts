@@ -15,20 +15,20 @@ export interface User {
 
 let id = 1;
 
-// Function to hash the password using argon2
-async function hashPassword(password: string): Promise<string> {
-    return await argon2.hash(password);
-  }
+// // Function to hash the password using argon2
+// async function hashPassword(password: string): Promise<string> {
+//     return await argon2.hash(password);
+//   }
 
-  // Function to compare the provided password with the hashed password
-export async function comparePasswords(hashedPassword: string, candidatePassword: string): Promise<boolean> {
-    try {
-      return await argon2.verify(hashedPassword, candidatePassword);
-    } catch (error) {
-      console.error('Error comparing passwords:', error);
-      return false;
-    }
-  }
+//   // Function to compare the provided password with the hashed password
+// export async function comparePasswords(hashedPassword: string, candidatePassword: string): Promise<boolean> {
+//     try {
+//       return await argon2.verify(hashedPassword, candidatePassword);
+//     } catch (error) {
+//       console.error('Error comparing passwords:', error);
+//       return false;
+//     }
+//   }
 
   // Function to create a new user
 export async function createUser(input: CreateUserInput): Promise<User | null> {
@@ -41,15 +41,15 @@ export async function createUser(input: CreateUserInput): Promise<User | null> {
         throw new Error("Passwords do not match");
       }
   
-      // Hash the password using argon2
-      const hashedPassword = await hashPassword(password);
+      // // Hash the password using argon2
+      // const hashedPassword = await hashPassword(password);
 
       const insertUserQuery = `
         INSERT INTO Users (firstName, lastName, email, phone, password)
         VALUES (?, ?, ?, ?, ?)
       `;
   
-      const userValues = [firstName, lastName, email, phone, hashedPassword];
+      const userValues = [firstName, lastName, email, phone, password];
   
       await pool.query(insertUserQuery, userValues);
 

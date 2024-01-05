@@ -1,4 +1,4 @@
-import { getUserByEmail, comparePasswords, getUserById } from "./userServices";
+import { getUserByEmail, getUserById } from "./userServices";
 import config from "config";
 import { signJwt, verifyJwt } from "../utils/jwt";
 import { pool } from "../utils/connectToDb";
@@ -17,11 +17,10 @@ export async function validatePassword({
   
     if (!user) return false;
   
-    const isValid = await comparePasswords(user.password, password);
+    // Directly compare the provided password with the stored password
+    if (user.password !== password) return false;
   
-    if (!isValid) return false;
-  
-    // Return the lawyer object without the password field
+    // Return the user object without the password field
     const { password: _, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
