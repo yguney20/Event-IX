@@ -89,3 +89,18 @@
     margin-bottom: 5px; /* Space between list items */
 }
 
+
+.help.is-danger {
+    color: #ff3860; /* This is a typical Bulma danger color, adjust as needed */
+    margin-top: 10px; /* Add space above the error message */
+    font-weight: bold; 
+    display: none; /* Hide by default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for appearing */
+}
+
+/* When the error message is shown */
+.help.is-danger.show {
+    display: block;
+    opacity: 1;
+}
