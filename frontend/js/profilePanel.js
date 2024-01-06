@@ -3,7 +3,7 @@ function toggleProfilePanel() {
     const userID = localStorage.getItem('userID'); 
 
     if (!token || !userID) {
-        alert('Please login first');
+        showLoginAlert();
         return;
     }
 
@@ -332,5 +332,16 @@ function fetchUserFavoriteEventType() {
     })
     .catch(error => {
         console.error('Error fetching favorite event type:', error);
+    });
+}
+function showLoginAlert() {
+    Swal.fire({
+        title: 'Please Login',
+        text: 'Please login to your profile.',
+        icon: 'info',
+        confirmButtonText: 'OK',
+        customClass: {
+            confirmButton: 'btn btn-primary' // Example of adding custom classes
+        }
     });
 }

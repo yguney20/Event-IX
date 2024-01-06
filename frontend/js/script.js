@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // This function will be called to load events when the page loads
 function loadEvents() {
-    fetch('/api/events')
+    fetch('/api/all-events')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok.');
@@ -19,8 +19,6 @@ function loadEvents() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', loadEvents);
-
 function renderEvents(events) {
     const eventsContainer = document.querySelector('.events .event-container .columns');
     eventsContainer.innerHTML = ''; // Clear existing events
@@ -29,7 +27,7 @@ function renderEvents(events) {
     events.forEach(event => {
         const eventHTML = `
             <div class="column is-one-third">
-                <div class="card">
+                <div class="card event-card" data-event-id="${event.EventID}">
                     <div class="card-image">
                         <figure class="image is-4by3">
                             <img src="${event.ImageURL || 'path/to/default-image.png'}" alt="${event.Name}">
@@ -55,6 +53,35 @@ function renderEvents(events) {
 
         // Append the event HTML to the container
         eventsContainer.insertAdjacentHTML('beforeend', eventHTML);
+    });
+    // Add the event listeners after the HTML for the cards has been inserted
+    document.querySelectorAll('.event-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const eventId = card.getAttribute('data-event-id');
+            handleEventCardClick(eventId);
+        });
+    });
+}
+
+function handleEventCardClick(eventId) {
+    const accessToken = localStorage.getItem('token');
+    
+    if (accessToken) {
+        window.location.href = `/event-detail.html?eventId=${eventId}`;
+    } else {
+        showLoginAlert(); // Show the login alert message
+    }
+}
+
+function showLoginAlert() {
+    Swal.fire({
+        title: 'Please Login',
+        text: 'Please login to see event details.',
+        icon: 'info',
+        confirmButtonText: 'OK',
+        customClass: {
+            confirmButton: 'btn btn-primary' // Example of adding custom classes
+        }
     });
 }
 
