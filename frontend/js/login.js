@@ -22,13 +22,13 @@ function updateNavbarForLoggedOutUser() {
 }
 
 function logoutUser() {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
     localStorage.removeItem('userID');
     updateNavbarForLoggedOutUser();
 }
 
 function checkLoginStateAndUpdateNavbar() {
-    if (localStorage.getItem('accessToken')) {
+    if (localStorage.getItem('token')) {
         updateNavbarForLoggedInUser();
     } else {
         updateNavbarForLoggedOutUser();
@@ -56,7 +56,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(data => {
         if (data.accessToken) {
-            localStorage.setItem('accessToken', data.accessToken);
+            localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userID', data.userID);
             updateNavbarForLoggedInUser();
             console.log('Login Success:', data);
