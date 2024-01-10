@@ -29,19 +29,29 @@ function displayEventDetails(event) {
         <div class="event-body">
             <p class="event-description">${event.Description}</p>
             <p class="event-info">
-                <span>Venue: ${event.VenueName}, ${event.VenueLocation}</span> | 
-                <span>Date: ${new Date(event.Date).toLocaleString('en-US', {
-                    day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute:'2-digit'
-                })}</span>
+                <span>Venue: ${event.VenueName}, ${event.Location}</span> | 
+                <span>Date: ${new Date(event.Date).toLocaleString()}</span>
             </p>
             <p class="event-organizer">Organized by: ${event.OrganizerName}</p>
             <div class="ticket-info">
-                <p class="event-price">Ticket Price: $${event.TicketPrice}</p>
+                <p class="event-price">Ticket Price: $${event.Price}</p>
+                <div class="ticket-quantity">
+                    <label for="ticketCount">Tickets:</label>
+                    <input type="number" id="ticketCount" value="1" min="1" max="10" onchange="updateTotalPrice(${event.Price})">
+                </div>
+                <p id="totalPrice">Total Price: $${event.Price}</p>
                 <button class="buy-ticket-btn">Buy Tickets</button>
             </div>
         </div>
     `;
 }
+
+function updateTotalPrice(ticketPrice) {
+    const ticketCount = document.getElementById('ticketCount').value;
+    const totalPrice = ticketPrice * ticketCount;
+    document.getElementById('totalPrice').textContent = `Total Price: $${totalPrice}`;
+}
+
 
 
 // Extract the eventId from the URL and fetch the event details

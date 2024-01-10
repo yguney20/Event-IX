@@ -74,3 +74,16 @@ h1 {
 .buy-ticket-btn:hover {
     background-color: #45a049;
 }
+
+
+.ticket-quantity {
+    margin: 10px 0;
+}
+
+.ticket-quantity label {
+    margin-right: 10px;
+}
+
+#ticketCount {
+    width: 50px;
+}

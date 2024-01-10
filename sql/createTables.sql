@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS Events (
     Description TEXT,
     OrganizerID INT,
     ImageURL VARCHAR(255), 
+    Price INT,
     FOREIGN KEY (VenueID) REFERENCES Venues(VenueID) ON DELETE CASCADE,
     FOREIGN KEY (OrganizerID) REFERENCES Organizers(OrganizerID) ON DELETE CASCADE
 );
@@ -76,7 +77,6 @@ CREATE TABLE IF NOT EXISTS Tickets (
     BookingID INT,
     ReservationID INT,
     EventID INT,
-    Price INT,
     SeatNumber VARCHAR(50),
     TicketStatus VARCHAR(50) NOT NULL DEFAULT 'not sold' CHECK (TicketStatus IN ('sold', 'reserved', 'not sold')),
     FOREIGN KEY (EventID) REFERENCES Events(EventID) ON DELETE CASCADE,

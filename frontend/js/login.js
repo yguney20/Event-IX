@@ -3,6 +3,7 @@ function toggleLoginModal() {
     var modal = document.getElementById('loginModal');
     modal.classList.toggle('is-active');
 }
+
 function updateNavbarForLoggedInUser() {
     var navbarButtons = document.querySelector('.navbar-item .buttons');
     navbarButtons.innerHTML = `
@@ -10,9 +11,7 @@ function updateNavbarForLoggedInUser() {
     `;
 }
 
-function logoutUser() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userID');
+function updateNavbarForLoggedOutUser() {
     var navbarButtons = document.querySelector('.navbar-item .buttons');
     navbarButtons.innerHTML = `
         <a class="button login" id="loginButton" onclick="toggleLoginModal()">Log In</a>
@@ -22,6 +21,19 @@ function logoutUser() {
     `;
 }
 
+function logoutUser() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('userID');
+    updateNavbarForLoggedOutUser();
+}
+
+function checkLoginStateAndUpdateNavbar() {
+    if (localStorage.getItem('accessToken')) {
+        updateNavbarForLoggedInUser();
+    } else {
+        updateNavbarForLoggedOutUser();
+    }
+}
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -43,25 +55,22 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         return response.json();
     })
     .then(data => {
-        // Login successful
-        updateNavbarForLoggedInUser();
-        console.log('Login Success:', data);
-        toggleLoginModal();
-        
         if (data.accessToken) {
-            localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('userID', data.userID);
-            console.log('Access:', data.accessToken);
+            updateNavbarForLoggedInUser();
+            console.log('Login Success:', data);
+            toggleLoginModal();
         }
     })
     .catch((error) => {
         console.error('Error:', error);
-        // Handle login errors (show an error message on the page)
         var loginErrorElement = document.getElementById('loginError');
         if (loginErrorElement) {
-            loginErrorElement.classList.add('show'); // This should correctly show the error message
-        } else {
-            console.log('Error message element not found');
+            loginErrorElement.classList.add('show');
         }
     });
 });
+
+// Check login state on page load
+document.addEventListener('DOMContentLoaded', checkLoginStateAndUpdateNavbar);
