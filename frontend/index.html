@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/profilePanel.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/b7fbe78e65.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
     <script src="js/profilePanel.js" ></script>
     <script src="js/login.js" defer></script>
@@ -34,8 +35,8 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">
-                        Find Events
+                    <a class="navbar-item" href="index.html">
+                        Home
                     </a>
                     <a class="navbar-item">
                         Create Events
@@ -92,24 +93,55 @@
         </div>
     </section>
 
-    <section class="section categories-filters">
-        <div class="container">
-            <div class="category-buttons">
-                <button class="button is-medium" onclick="location.href='categoryPages/concerts.html'">Concerts</button>
-                <button class="button is-medium" onclick="location.href='categoryPages/musicals.html'">Musicals</button>
-                <button class="button is-medium" onclick="location.href='categoryPages/sports.html'">Sports</button>
-                <button class="button is-medium" onclick="location.href='categoryPages/theatre.html'">Theatre</button>
-                <!-- Add more category buttons as needed -->
-            </div>
-            <div class="full-width-line"></div>
-            <div class="filter-buttons">
-                <button class="button is-small">Date</button>
-                <button class="button is-small">Price</button>
-                <!-- Add more filter buttons as needed -->
-            </div>
-        </div>
-    </section>
 
+    <section class="section categories-filters">
+    <div class="container">
+        <div class="iconCategoryWrapper">
+            <!-- Concerts Button -->
+            <a href="categoryPages/concert.html" class="iconCategoryCard">
+                <div class="iconCategoryCardImageWrapper">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+                <p class="iconCategoryCardTitle">Concerts</p>
+            </a>
+
+            <!-- Musicals Button -->
+            <a href="categoryPages/musical.html" class="iconCategoryCard">
+                <div class="iconCategoryCardImageWrapper">
+                    <i class="fa-regular fa-face-grin-stars"></i>
+                </div>
+                <p class="iconCategoryCardTitle">Musicals</p>
+            </a>
+
+            <!-- Sports Button -->
+            <a href="categoryPages/sports.html" class="iconCategoryCard">
+                <div class="iconCategoryCardImageWrapper">
+                    <i class="fa-regular fa-futbol"></i>
+
+                </div>
+                <p class="iconCategoryCardTitle">Sports</p>
+            </a>
+
+            <!-- Theatre Button -->
+            <a href="categoryPages/theatre.html" class="iconCategoryCard">
+                <div class="iconCategoryCardImageWrapper">
+                    <i class="fa-solid fa-masks-theater"></i>
+                </div>
+                <p class="iconCategoryCardTitle">Theatre</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="full-width-line"></div>
+
+</section class="section categories-filters">
+    <div class="filter-buttons">
+        <button class="button is-medium">Date</button>
+        <button class="button is-medium">Price</button>
+        <!-- Add more filter buttons as needed -->
+    </div>
+</section>
     
     <!-- Events Section -->
     <section class="section events">
@@ -118,10 +150,8 @@
                 <!-- Event Item Placeholder -->
                 <div class="column is-one-third">
                     <div class="card">
-                        <!-- Event content -->
                     </div>
                 </div>
-                <!-- Repeat for each event -->
             </div>
         </div>
     </section>
@@ -176,7 +206,7 @@
             </section>
         </div>
     </div>
-
+    
 
 <div id="signupModal" class="modal">
     <div class="modal-background"></div>

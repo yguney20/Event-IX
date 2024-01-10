@@ -75,11 +75,7 @@ body {
     padding-bottom: 15px;
 }
 
-/* Category and filter button styling */
-.categories-filters {
-    text-align: center;
-    margin-top: -1.5rem; /* Adjust space from the hero section */
-}
+
 
 .hero{
     padding-top: 1rem; 
@@ -96,16 +92,75 @@ body {
     line-height: 1.2; /* Adjust line height to tighten up space */
 }
 
-
-.category-buttons .button{
-    width: 150px;
-    height: 60px;
-    margin: 0.5rem;
-    border: none;
-    background-color: #D7E5CA;
-    color: #333;
+/* Category and filter button styling */
+.categories-filters {
+    text-align: center;
+    margin-top: -0.5rem; /* Adjust space from the hero section */
+    margin-bottom: -0.5rem; 
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap as needed */
+}
+.iconCategoryWrapper {
+    display: flex; /* Use flex layout for horizontal alignment */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Wrap items to next line on small screens */
+    gap: 1rem; /* Add space between items */
 }
 
+.iconCategoryCard {
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin: 1rem; /* Space between buttons */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.iconCategoryCardImageWrapper {
+    background-color: #D7E5CA; /* Light green background */
+    padding: 1rem; /* Spacing around the icon */
+    border-radius: 50%; /* Circular border */
+    margin-bottom: 0.5rem; /* Space between icon and text */
+    display: flex; /* Use flexbox to center the icon */
+    justify-content: center; /* Center the icon horizontally */
+    align-items: center; /* Center the icon vertically */
+}
+
+.iconCategoryCardImageWrapper i {
+    font-size: 2rem; /* Larger icon size */
+    color: #333; /* Icon color */
+}
+
+.iconCategoryCardTitle {
+    color: #333; /* Title color */
+    font-weight: bold; /* Bold font for the title */
+    font-size: 1rem;
+}
+
+/* Hover effects for the card */
+.iconCategoryCard:hover .iconCategoryCardImageWrapper {
+    background-color: #8EACCD; /* Change background on hover */
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+    border-color: #8EACCD; /* Change border color on hover */
+    color: #333; /* Change title color on hover */
+
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .iconCategoryWrapper {
+        flex-direction: column; /* Stack vertically on small screens */
+    }
+}
+.filter-buttons{
+    text-align: center;
+    margin-top: 0.5rem; /* Adjust space from the hero section */
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap as needed */
+}
 
 .filter-buttons .button {
     width: 90px;
@@ -114,15 +169,16 @@ body {
     border: none;
     background-color: #D2E0FB;
     color: #333;
+    justify-content: center; /* Center items horizontally */
+    align-items: center;
 }
 
 .category-buttons .button {
     padding: 1rem 2rem; /* Larger buttons for categories */
+    justify-content: center; /* Center items horizontally */
+    align-items: center;
 }
 
-.filter-buttons .button {
-    padding: 0.5rem 1rem; /* Smaller buttons for filters */
-}
 
 .category-buttons .button:hover,
 .filter-buttons .button:hover {
@@ -148,7 +204,7 @@ body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: 3px; /* Space between the category buttons and the line */
+    margin-top: 1px; /* Space between the category buttons and the line */
 }
 
 /* Ensure that all images take up 100% of the card-image container */
