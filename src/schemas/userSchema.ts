@@ -35,5 +35,30 @@ export const createUserSchema = object({
     }),
   });
 
+  export const updateUserProfileSchema = object({
+    params: object({
+      userID: string({
+        required_error: "User ID is required",
+      }),
+    }),
+    body: object({
+      userphone: string({
+        required_error: "Phone is required",
+      }),
+      emergencyContact: object({
+        name: string({
+          required_error: "Emergency contact name is required",
+        }),
+        phone: string({
+          required_error: "Emergency contact phone is required",
+        }),
+        relation: string({
+          required_error: "Emergency contact relation is required",
+        }),
+      }).nullable(),
+    }),
+  });
+
+export type UpdateUserProfileInput = TypeOf<typeof updateUserProfileSchema>;
 export type CreateUserInput = TypeOf<typeof createUserSchema>;
 export type GetUserProfileInput = TypeOf<typeof getUserProfileSchema>;

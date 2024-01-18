@@ -30,6 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Attach event listeners to your profile icon
     var profileIcon = document.getElementById('profileIcon');
     profileIcon.addEventListener('click', toggleProfilePanel);
+
+    // Attach event listener to update profile button
+    const updateProfileBtn = document.getElementById('updateProfileBtn');
+    updateProfileBtn.addEventListener('click', toggleUpdateProfileForm);
+    
+    // Attach event listener to save profile button
+    const saveProfileBtn = document.getElementById('saveProfileBtn');
+    saveProfileBtn.addEventListener('click', saveUserProfile);
 });
 
 function loadProfilePanel() {
@@ -117,6 +125,14 @@ function updateProfilePanel(userData) {
         userEmergencyContact = document.createElement('p');
         userEmergencyContact.id = 'userEmergencyContact';
         profileContent.appendChild(userEmergencyContact);
+    }
+
+    // Check if emergency contact is available
+    if (userData.emergencyContact) {
+        const contactInfo = `Emergency Contact: ${userData.emergencyContact.Name}, Phone: ${userData.emergencyContact.Phone}, Relation: ${userData.emergencyContact.Relation}`;
+        userEmergencyContact.textContent = contactInfo;
+    } else {
+        userEmergencyContact.textContent = 'Emergency Contact: None';
     }
 }
 
@@ -345,3 +361,77 @@ function showLoginAlert() {
         }
     });
 }
+
+function toggleUpdateProfileForm() {
+
+    // Toggle the visibility of the update profile form
+    const updateProfileForm = document.getElementById('updateProfileForm');
+    updateProfileForm.classList.toggle('open');
+
+    // If the form is open, fetch existing data
+    if (updateProfileForm.classList.contains('open')) {
+        fetchUserEmergencyContact(); // Fetch existing emergency contact data
+        fetchUserProfile(); // Fetch existing user data
+    }
+}
+
+function saveUserProfile() {
+    console.log('Save User Profile function called');
+
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userID'); // Add this line to get the userId
+
+    if (!token || !userId) {
+        console.error('No token or user ID found');
+        return;
+    }
+
+    const updatedPhone = document.getElementById('updatePhone').value;
+    const updatedEmergencyName = document.getElementById('updateEmergencyName').value;
+    const updatedEmergencyPhone = document.getElementById('updateEmergencyPhone').value;
+    const updatedEmergencyRelation = document.getElementById('updateEmergencyRelation').value;
+
+    const data = {
+        userphone: updatedPhone,
+        emergencyContact: {
+            name: updatedEmergencyName,
+            phone: updatedEmergencyPhone,
+            relation: updatedEmergencyRelation
+        }
+    };
+
+    fetch(`/api/user/profile/${userId}`, {  // Update the URL to include userId
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        console.log('Response from server:', response);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(updatedUserData => {
+        // Fetch updated user data
+        return fetchUserProfile();
+    })
+    .then(() => {
+        // Close the update profile form
+        const updateProfileForm = document.getElementById('updateProfileForm');
+        updateProfileForm.classList.remove('open');
+    })
+    .catch(error => {
+        console.error('Error updating profile:', error);
+    });
+}
+  
+
+
+
+
+        

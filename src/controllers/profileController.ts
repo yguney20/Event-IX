@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import { getUserTicketCount, getUserEmergencyContact, getUserFavoriteEventType,
-    getUserUpcomingBookings,getUserPastBookings} from '../services/profileServices';
+    getUserUpcomingBookings,getUserPastBookings, updateUserProfile} from '../services/profileServices';
+import { UpdateUserProfileInput } from '../schemas/userSchema';
+import { getUserById } from '../services/userServices';
+
 
 
 export async function getUserTicketsHandler(req: Request, res: Response) {
@@ -84,3 +87,36 @@ export async function getUserFavoriteEventTypeHandler(req: Request, res: Respons
     }
 }
 
+export async function updateUserProfileHandler(req: Request<UpdateUserProfileInput["params"], {}, UpdateUserProfileInput["body"]>, res: Response) {
+  const userId = Number(req.params.userID);
+
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+
+  const data = req.body as UpdateUserProfileInput['body'];
+
+  try {
+    await updateUserProfile(userId, data);
+    const updatedUser = await getUserById(userId);
+    const emergencyContact = await getUserEmergencyContact(userId);
+
+    // If successful, you might want to fetch and return the updated user profile
+    // Here, you would call functions like getUserEmergencyContact, getUserUpcomingBookings, etc.
+
+    // Example:
+    // const updatedEmergencyContact = await getUserEmergencyContact(userId);
+    // const upcomingBookings = await getUserUpcomingBookings(userId);
+    
+    // Return the updated data to the client
+    return res.json({
+      success: true,
+      user: updatedUser,
+      emergencyContact: emergencyContact,
+      // Include any additional data you want to send back
+    });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    return res.status(500).json({ error: 'Failed to update user profile' });
+  }
+}

@@ -104,3 +104,42 @@
     display: block;
     opacity: 1;
 }
+
+/* Styling for the update profile form */
+.profile-panel .update-profile-form {
+    display: none; /* Initially hide the form */
+    margin-top: 20px; /* Add space above the form */
+}
+
+/* Show the form when it has the 'open' class */
+.profile-panel .update-profile-form.open {
+    display: block;
+}
+
+.profile-panel .update-profile-form h4 {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.profile-panel .update-profile-form label {
+    color: #666;
+    display: block;
+    margin: 10px 0;
+}
+
+.profile-panel .update-profile-form input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.profile-panel .update-profile-form button {
+    background-color: #7ee0a5;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+

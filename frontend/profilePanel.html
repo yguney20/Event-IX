@@ -1,16 +1,44 @@
-<link rel="stylesheet" href="css/profilePanel.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Web App</title>
+    <link rel="stylesheet" href="css/profilePanel.css">
+</head>
+<body>
+    <div class="profile-content">
+        <h3 id="userName"></h3>
+        <p id="userEmail"></p>
+        <p id="userPhone"></p> 
+        <p id="userEmergencyContact">Emergency Contact: </p>
+        <div class="user-stats">
+            <p id="userTickets">Ticket Count: 4</p>
+            <p id="userFavoriteEventType">Favorite Event Type: Concert</p>
+        </div>
+        <h5>Upcoming Events:</h5>
+        <ul id="userUpcomingBookings"></ul>
+        <h5>Past Events:</h5>
+        <ul id="userPastBookings"></ul>
+        <button id="updateProfileBtn" onclick="toggleUpdateProfileForm()">Update Profile</button>
+                
+        <div id="updateProfileForm" class="update-profile-form">
+            <h4>Update Profile</h4>
+            <label for="updatePhone">Phone:</label>
+            <input type="text" id="updatePhone" />
 
-<div class="profile-content">
-    <h3 id="userName"></h3>
-    <p id="userEmail"></p>
-    <p id="userPhone"></p> 
-    <p id="userEmergencyContact">Emergency Contact: </p>
-    <div class="user-stats">
-        <p id="userTickets">Ticket Count: 4</p>
-        <p id="userFavoriteEventType">Favorite Event Type: Concert</p>
-    </div>
-    <h5>Upcoming Events:</h5>
-    <ul id="userUpcomingBookings"></ul>
-    <h5>Past Events:</h5>
-    <ul id="userPastBookings"></ul>
-</div>
+            <label for="updateEmergencyName">Emergency Contact Name:</label>
+            <input type="text" id="updateEmergencyName" />
+
+            <label for="updateEmergencyPhone">Emergency Contact Phone:</label>
+            <input type="text" id="updateEmergencyPhone" />
+
+            <label for="updateEmergencyRelation">Emergency Contact Relation:</label>
+            <input type="text" id="updateEmergencyRelation" />
+
+            <button id="saveProfileBtn" onclick="saveUserProfile()">Save</button> 
+        </div>
+
+    <script src="js/your-script.js"></script>
+</body>
+</html>

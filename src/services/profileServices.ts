@@ -1,5 +1,5 @@
 import { pool } from '../utils/connectToDb';
-import { CreateUserInput} from '../schemas/userSchema';
+import { CreateUserInput, UpdateUserProfileInput} from '../schemas/userSchema';
 import argon2 from "argon2";
 
 export async function getUserTicketCount(userId: number): Promise<number> {
@@ -109,5 +109,62 @@ export async function getUserFavoriteEventType(userId: number) {
     } catch (error) {
         console.error("Error getting user favorite event type:", error);
         return null; 
+    }
+}
+
+export async function updateUserProfile(userId: number, data: UpdateUserProfileInput['body']) {
+    const { userphone, emergencyContact } = data;
+
+    try {
+        // Begin a transaction
+        await pool.query('START TRANSACTION');
+
+        // Update the phone number
+        const updatePhoneQuery = 'UPDATE Users SET phone = ? WHERE userID = ?';
+        const phoneValues = [userphone, userId];
+        await pool.query(updatePhoneQuery, phoneValues);
+
+        // Check if there is an existing emergency contact
+        const existingContactQuery = 'SELECT * FROM EmergencyContact WHERE UserID = ?';
+        const existingContactValues = [userId];
+        const [existingContactRows] = await pool.query(existingContactQuery, existingContactValues);
+
+        if (emergencyContact) {
+            // If there's an existing contact, update it
+            if ((existingContactRows as any).length > 0) {
+                const { name, phone, relation } = emergencyContact;
+                const updateEmergencyContactQuery = `
+                    UPDATE EmergencyContact
+                    SET Name = ?, Phone= ?, Relation = ?
+                    WHERE UserID = ?;
+                `;
+                const updateEmergencyContactValues = [name, phone, relation, userId];
+                await pool.query(updateEmergencyContactQuery, updateEmergencyContactValues);
+            } else {
+                // If there's no existing contact, insert a new one
+                const { name, phone, relation } = emergencyContact;
+                const insertEmergencyContactQuery = `
+                    INSERT INTO EmergencyContact (UserID, Phone, Name, Relation)
+                    VALUES (?, ?, ?, ?);
+                `;
+                const insertEmergencyContactValues = [userId, phone, name, relation];
+                await pool.query(insertEmergencyContactQuery, insertEmergencyContactValues);
+            }
+        } else {
+            // If no emergency contact data is provided, delete the existing contact if any
+            if ((existingContactRows as any).length > 0) {
+                const deleteEmergencyContactQuery = 'DELETE FROM EmergencyContact WHERE UserID = ?';
+                const deleteValues = [userId];
+                await pool.query(deleteEmergencyContactQuery, deleteValues);
+            }
+        }
+
+        // Commit the transaction
+        await pool.query('COMMIT');
+    } catch (error) {
+        // Rollback the transaction if there is an error
+        await pool.query('ROLLBACK');
+        console.error('Error updating user profile:', error);
+        throw error; // Propagate the error to the controller
     }
 }
