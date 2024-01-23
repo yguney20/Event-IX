@@ -19,6 +19,26 @@ function loadEvents(category) {
 }
 
 
+function filterEventsByCategoryAndDate(date) {
+    const category = getCategoryFromUrl();
+    const dateParts = date.split("/");
+    const newDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1]
+    fetch(`/api/events-by-category-and-date?category=${encodeURIComponent(category)}&date=${encodeURIComponent(newDate)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderEvents(data); // Call the function to render events
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+
 function renderEvents(events) {
     const eventsContainer = document.querySelector('.events .event-container .columns');
     eventsContainer.innerHTML = ''; // Clear existing events

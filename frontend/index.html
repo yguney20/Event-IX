@@ -143,7 +143,6 @@
     </div>
     <!-- Add a new section for the datepicker -->
     <div id="datepicker-section">
-        <p id="selected-date"></p>
     </div>
 
     <!-- Include jQuery and jQuery UI libraries -->
@@ -154,7 +153,6 @@
         $(document).ready(function() {
             $("#datepicker-section").datepicker({
                 onSelect: function(dateText) {
-                    $('#selected-date').text(dateText);
                     filterEventsByDate(dateText);
                 }
             });

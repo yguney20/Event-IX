@@ -22,7 +22,6 @@ function loadEvents() {
 function filterEventsByDate(date) {
     const dateParts = date.split("/");
     const newDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1]
-    console.log(newDate)
     fetch(`/api/all-events-by-date?date=${encodeURIComponent(newDate)}`)
         .then(response => {
             if (!response.ok) {
