@@ -1,4 +1,4 @@
-USE comp306_project;
+CREATE DATABASE comp306_project;
 
 
 CREATE TABLE IF NOT EXISTS Venues (

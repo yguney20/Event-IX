@@ -44,6 +44,8 @@ function displayEventDetails(event) {
             </div>
         </div>
     `;
+    const buyButton = container.querySelector('.buy-ticket-btn');
+    buyButton.addEventListener('click', () => purchaseTickets(event.EventID));
 }
 
 function updateTotalPrice(ticketPrice) {
