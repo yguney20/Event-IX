@@ -45,7 +45,6 @@ async function createTables() {
         const sqlFileContent = await fs.readFile(sqlPath, 'utf-8');
         const sqlStatements = sqlFileContent.split(';');
         
-        // Assuming pool.query is a valid function call here
         for (const statement of sqlStatements) {
             if (statement.trim()) {
                 await pool.query(statement);
