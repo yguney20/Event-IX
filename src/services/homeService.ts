@@ -39,4 +39,38 @@ export async function getEventsByCategory(category: string): Promise<EventDetail
         console.error("Error getting events from the database:", error);
         throw error;
     }
+
+
+
+}
+
+export async function getUserRecommendations(userId: number): Promise<EventDetails[]> {
+    try {
+        const query = `
+            SELECT Events.*
+            FROM Events
+            WHERE Type IN (
+                SELECT Type 
+                FROM Events 
+                JOIN Tickets ON Events.EventID = Tickets.EventID
+                WHERE Tickets.BookingID IN (
+                    SELECT BookingID 
+                    FROM Bookings 
+                    WHERE UserID = ?
+                )
+            )
+            AND Events.EventID NOT IN (
+                SELECT EventID 
+                FROM Tickets 
+                JOIN Bookings ON Tickets.BookingID = Bookings.BookingID
+                WHERE UserID = ?
+            )
+            ORDER BY Events.Date;
+        `;
+        const [results] = await pool.query<RowDataPacket[]>(query, [userId, userId]);
+        return results as EventDetails[];
+    } catch (error) {
+        console.error("Error getting user recommendations:", error);
+        throw error;
+    }
 }
