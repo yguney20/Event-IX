@@ -10,7 +10,7 @@ export async function getEventsByDate(date: string) {
             WHERE Date = ?
             ORDER BY Date DESC
         `;
-        const [rows] = await pool.query(query, [date]);
+        const [rows] = await pool.query(query, [new Date(date)]);
         return rows;
     } catch (error) {
         console.error("Error getting events from the database:", error);

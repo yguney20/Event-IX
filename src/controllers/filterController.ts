@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import { getEventsByDate,getEventsByCategoryAndDate } from '../services/filterService';
+import log from '../utils/logger';
 
 export async function getEventsByDateHandler(req: Request, res: Response) {
     const date = req.query.date as string;
     try {
+        log.info(date + "aaaaa");
         const events = await getEventsByDate(date);
         return res.json(events);
     } catch (error) {
