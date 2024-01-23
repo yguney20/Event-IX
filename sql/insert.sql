@@ -56,27 +56,27 @@ INSERT INTO EmergencyContact (UserID, Phone, Name, Relation) VALUES
 (5, '5339871122', 'Sadi Gürbüz', 'Father'),
 (6, '5326005533', 'Saadet Özkan', 'Mother');
 
-INSERT INTO Bookings (UserID, BookingDate, PaymentType) VALUES
-(1, '2023-01-10 00:00:00', 'Credit Card'),
-(1, '2023-01-15 00:00:00', 'Debit Card'),
-(1, '2024-04-20 19:00:00', 'Credit Card'),
-(1, '2024-05-05 20:00:00', 'PayPal'),
-(2, '2023-02-10 00:00:00', 'Credit Card'),
-(2, '2023-03-15 00:00:00', 'Debit Card'),
-(3, '2024-01-10 13:00:00', 'Debit Card'),
-(3, '2024-02-10 21:12:12', 'Credit Card'),
-(3, '2024-03-11 10:36:41', 'PayPal'),
-(4, '2024-01-19 13:43:54', 'Debit Card'),
-(4, '2024-02-18 14:32:45', 'Debit Card'),
-(4, '2024-03-24 23:42:12', 'PayPal'),
-(5, '2024-01-01 00:00:00', 'Credit Card'),
-(5, '2023-01-01 00:00:00', 'PayPal'),
-(5, '2024-01-02 00:00:00', 'Credit Card'),
-(5, '2024-01-01 10:12:51', 'Debit Card'),
-(6, '2022-12-12 00:00:00', 'Credit Card'),
-(6, '2024-03-10 00:00:00', 'PayPal'),
-(6, '2023-02-01 00:00:00', 'Debit Card'),
-(6, '2024-01-02 00:00:00', 'Credit Card');
+INSERT INTO Bookings (UserID, BookingDate, PaymentType, TicketCount ) VALUES
+(1, '2023-01-10 00:00:00', 'Credit Card',1),
+(1, '2023-01-15 00:00:00', 'Debit Card',1),
+(1, '2024-04-20 19:00:00', 'Credit Card',1),
+(1, '2024-05-05 20:00:00', 'PayPal',1),
+(2, '2023-02-10 00:00:00', 'Credit Card',1),
+(2, '2023-03-15 00:00:00', 'Debit Card',1),
+(3, '2024-01-10 13:00:00', 'Debit Card',1),
+(3, '2024-02-10 21:12:12', 'Credit Card',1),
+(3, '2024-03-11 10:36:41', 'PayPal',1),
+(4, '2024-01-19 13:43:54', 'Debit Card',1),
+(4, '2024-02-18 14:32:45', 'Debit Card',1),
+(4, '2024-03-24 23:42:12', 'PayPal',1),
+(5, '2024-01-01 00:00:00', 'Credit Card',1),
+(5, '2023-01-01 00:00:00', 'PayPal',1),
+(5, '2024-01-02 00:00:00', 'Credit Card',1),
+(5, '2024-01-01 10:12:51', 'Debit Card',1),
+(6, '2022-12-12 00:00:00', 'Credit Card',1),
+(6, '2024-03-10 00:00:00', 'PayPal',1),
+(6, '2023-02-01 00:00:00', 'Debit Card',1),
+(6, '2024-01-02 00:00:00', 'Credit Card',1);
 
 INSERT INTO Tickets (BookingID, ReservationID, EventID, SeatNumber, TicketStatus) VALUES
 (1, NULL, 1, 'A1', 'sold'),

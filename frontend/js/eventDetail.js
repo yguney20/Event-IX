@@ -4,6 +4,10 @@ function getEventIdFromUrl() {
     return queryParams.get('eventId');
 }
 
+function getCurrentUserId() {
+    return localStorage.getItem('userID');
+}
+
 // Fetch event details from the backend
 function fetchEventDetails(eventId) {
     fetch(`/api/events/${eventId}`)
@@ -65,3 +69,53 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Event ID not found in the URL');
     }
 });
+
+function purchaseTickets(eventId) {
+    const ticketCount = document.getElementById('ticketCount').value;
+    const userId = getCurrentUserId(); // Retrieve this based on your user session management
+    const totalPrice = document.getElementById('totalPrice').textContent.split('$')[1];
+
+    fetch('/api/purchase-tickets', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ eventId, userId, ticketCount, totalPrice })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Purchase successful! Your tickets have been bought.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            });
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Purchase failed. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'btn btn-danger'
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'An error occurred. Please try again.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            customClass: {
+                confirmButton: 'btn btn-danger'
+            }
+        });
+    });
+}

@@ -1,6 +1,3 @@
-CREATE DATABASE comp306_project;
-
-
 CREATE TABLE IF NOT EXISTS Venues (
     VenueID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255),
@@ -63,6 +60,7 @@ CREATE TABLE IF NOT EXISTS Bookings (
     UserID INT NOT NULL,
     BookingDate TIMESTAMP,
     PaymentType VARCHAR(50),
+    TicketCount INT NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
 );
 
