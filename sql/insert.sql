@@ -37,7 +37,14 @@ INSERT INTO Events (Name, Type, Date, VenueID, Description, OrganizerID, ImageUR
 ('Cimri', 'Theatre', '2024-05-12 00:00:00', 7, "Moliere'in ünlü Cimri oyunu, Tansu Biçer'in yorumu ve Serkan Keskin'in çok konuşulan Harpagon performansıyla Uniq Hall'da!", 6, 'images/cimri.jpg',375),
 ('Zengin Mutfağı', 'Theatre', '2023-02-10 00:00:00', 7, "Şener Şen, DasDas prodüksiyonu olan Zengin Mutfağı’nda sahnelediği muhteşem performansıyla Uniq Hall'da!", 4, 'images/zenginmutfagi.jpg',440),
 ('Swan Lake', 'Dance', '2024-10-27 00:00:00', 5, "The Kremlin Ballet will perform Tchaikovsky's famous masterpiece Swan Lake on the stage of the Zorlu Center.", 3, 'images/swanlake.jpg', 275),
-("Notre Dame'ın Kamburu", 'Musical', '2022-11-03 00:00:00', 5, "TÜM ZAMANLARIN EN İYİ FRANSIZ MÜZİKALİ NOTRE DAME DE PARIS, ZORLU PSM’DE!", 6, 'images/notreDame.jpg',420);
+("Notre Dame'ın Kamburu", 'Musical', '2022-11-03 00:00:00', 5, "TÜM ZAMANLARIN EN İYİ FRANSIZ MÜZİKALİ NOTRE DAME DE PARIS, ZORLU PSM’DE!", 6, 'images/notreDame.jpg',420),
+("Cafe Müller", 'Dance', '2023-12-30 21:00:00', 7, "Pina Bausch’un Başyapıtı “Café Müller” Unique Hall'da!", 1, 'images/cafe_muller.jpg', 300),
+('Basketball All-Star Game', 'Sports', '2023-02-20 21:30:00', 4, 'The best basketball players showcase their skills in a spectacular event!', 3, 'images/basketball.jpg', 800),
+('La La Land Live', 'Concert', '2023-11-15 19:30:00', 5, 'Experience the magic of La La Land with a live orchestra!', 5, 'images/lalaland.png', 750),
+('The Nutcracker', 'Dance', '2023-12-15 19:00:00', 5, "Tchaikovsky's holiday classic brought to life through dance.", 2, 'images/nutcracker.jpg', 450),
+('The Phantom of the Opera', 'Musical', '2024-04-03 20:30:00', 2, "Andrew Lloyd Webber's timeless classic comes to life!", 4, 'images/phantomoftheopera.jpg', 700),
+('Harry Potter and the Cursed Child', 'Theatre', '2024-04-27 18:30:00', 5, 'A magical continuation of the Harry Potter story on stage.', 3, 'images/harrypotter.jpg', 550);
+
 
 INSERT INTO Users (firstName, lastName, email, phone, password) VALUES
 ('Serra', 'Işık', 'serraisik@email.com', '1234567890', 'serra123'),
