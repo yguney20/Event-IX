@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const category = getCategoryFromUrl(); // Determine the category from the URL
-    loadEvents(category);
+    loadEvents();
 });
-function loadEvents(category) {
+function loadEvents() {
+    const category = getCategoryFromUrl(); // Determine the category from the URL
     fetch(`/api/events-by-category?category=${encodeURIComponent(category)}`)
         .then(response => {
             if (!response.ok) {
@@ -17,6 +17,44 @@ function loadEvents(category) {
             console.error('There has been a problem with your fetch operation:', error);
         });
 }
+
+
+function filterEventsByCategoryAndDate(date) {
+    const category = getCategoryFromUrl();
+    const dateParts = date.split("/");
+    const newDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1]
+    fetch(`/api/events-by-category-and-date?category=${encodeURIComponent(category)}&date=${encodeURIComponent(newDate)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderEvents(data); // Call the function to render events
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+function filterEventsByCategoryAndPrice(maxPrice) {
+    const category = getCategoryFromUrl();
+    fetch(`/api/events-by-category-and-price?category=${encodeURIComponent(category)}&price=${encodeURIComponent(maxPrice)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderEvents(data); // Call the function to render events
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
 
 
 function renderEvents(events) {

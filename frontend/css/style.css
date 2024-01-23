@@ -51,6 +51,16 @@ body {
     max-width: 950px;
 }
 
+#datepicker-section {
+    display: flex;
+    justify-content: center;
+}
+
+#pricefilter-section {
+    display: flex;
+    justify-content: center;
+}
+
 #event-info {
     padding-left: 60px;
 }

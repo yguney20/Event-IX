@@ -14,6 +14,7 @@ import requireUser from './middlewares/requireUser';
 import fs from 'fs/promises';
 import path from 'path';
 import e from "express";
+import filterRouter from "./routes/filterRouter";
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(authRouter);
 app.use(profileRouter);
 app.use(homeRouter);
 app.use(eventRouter);
+app.use(filterRouter);
 app.use(deserializeUser);
 
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -43,7 +45,6 @@ async function createTables() {
         const sqlFileContent = await fs.readFile(sqlPath, 'utf-8');
         const sqlStatements = sqlFileContent.split(';');
         
-        // Assuming pool.query is a valid function call here
         for (const statement of sqlStatements) {
             if (statement.trim()) {
                 await pool.query(statement);
