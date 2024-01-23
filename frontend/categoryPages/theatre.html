@@ -75,13 +75,72 @@
             </div>
         </div>
     </section>
-    </section class="section categories-filters">
-    <div class="filter-buttons">
-        <button class="button is-medium">Date</button>
-        <button class="button is-medium">Price</button>
-        <!-- Add more filter buttons as needed -->
-    </div>
-    </section>
+</section class="section categories-filters">
+<div class="filter-buttons">
+    <button class="button is-medium">Date</button>
+    <button class="button is-medium">Price</button>
+    <!-- Add more filter buttons as needed -->
+</div>
+<!-- Add a new section for the datepicker -->
+<div id="datepicker-section">
+</div>
+
+<!-- Add a new section for the price filter -->
+<div id="pricefilter-section">
+    <input type="range" min="0" max="1000" value="1000" class="slider" id="priceRange">
+    <p id="maxPrice">Max Price = 1000</p>
+</div>
+
+<!-- Include jQuery and jQuery UI libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#datepicker-section").datepicker({
+            onSelect: function(dateText) {
+                filterEventsByCategoryAndDate(dateText);
+            }
+        });
+
+        document.getElementById("priceRange").onchange = function() {
+            filterEventsByCategoryAndPrice(this.value);
+            document.getElementById("maxPrice").innerHTML = "Max Price = " + this.value;
+        }
+
+        $("#datepicker-section").hide();
+        $("#pricefilter-section").hide();
+
+        $(".filter-buttons .button").click(function() {
+            if ($(this).text() === "Date") {
+                if ($("#datepicker-section").is(":visible")) {
+                    $("#datepicker-section").hide();
+                    loadEvents();
+                } else {
+                    $("#pricefilter-section").hide();
+                    $("#datepicker-section").show();
+                    loadEvents();
+                }
+            }
+        });
+
+        $(".filter-buttons .button").click(function() {
+            if ($(this).text() === "Price") {
+                if ($("#pricefilter-section").is(":visible")) {
+                    $("#pricefilter-section").hide();
+                    loadEvents();
+                } else {
+                    $("#datepicker-section").hide();
+                    $("#pricefilter-section").show();
+                    document.getElementById("maxPrice").innerHTML = "Max Price = 1000";
+                    $("#priceRange").value = 1000;
+                    loadEvents()
+                }
+            }
+        });
+    });
+</script>
+</section>
 
     <!-- Events Section -->
     <section class="section events">
