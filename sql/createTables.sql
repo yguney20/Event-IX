@@ -1,3 +1,6 @@
+USE comp306_project;
+
+
 CREATE TABLE IF NOT EXISTS Venues (
     VenueID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255),
