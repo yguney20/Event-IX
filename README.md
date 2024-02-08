@@ -16,7 +16,7 @@ Node js
 
 How to run?
 -
-npm i => installs node modules
-Enter your database password to confing file
-npm start => starts app
+npm i => installs node modules<br />
+Enter your database password to confing file<br />
+npm start => starts app<br />
 Once started the server will be active on http://localhost:3000
