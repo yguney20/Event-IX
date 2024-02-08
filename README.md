@@ -3,10 +3,10 @@ Grpup project made for Comp306 Database Management System class in Koç Universi
 
 Group members
 -
-Ata Tütek_
-Gürkan İnal_
-Sera Su Gürbüz_
-Serra Işık_
+Ata Tütek<br />
+Gürkan İnal<br />
+Sera Su Gürbüz<br />
+Serra Işık<br />
 Yılmaz Mert Güney
 
 Requirements
