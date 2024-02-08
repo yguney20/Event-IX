@@ -4,7 +4,7 @@ export default {
       host: 'localhost',
       port: 3306, 
       user: 'root',
-      password: 'Mert1707',
+      password:
       database: 'comp306_project',
     },
     accessTokenTtl: "1h",
